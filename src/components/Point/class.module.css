@@ -1,0 +1,47 @@
+.class {
+    width: 35%;
+    min-width: 380px;
+    padding: 20px 10px 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #cdfffa;
+    border-radius: 20px;
+
+    .classForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 18px 0 10px;
+            
+        div {
+            width: 320px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            label {
+                font-weight: bold;
+                font-size: 15px;
+                margin: 7px;
+            }
+            input {
+                padding: 3px;
+            }
+        }
+
+
+
+        .btn {
+            width: 320px;
+            display: block;
+            margin: 15px 3px 0;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.9;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 3px;
+        }
+    }
+}
+
