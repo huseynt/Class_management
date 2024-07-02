@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react'
 import { IStudent } from '../../interface/interface'
 import { useDispatch, useSelector } from 'react-redux'
 import { addStudent } from '../../redux/expense/studentSlice'
+import { RootState } from '../../redux/rootReducer'
 
 
 const Student = () => {
 
     const dispatch = useDispatch();
-    const studentList: IStudent[] = useSelector((state: any) => state.student.students);
+    const studentList: IStudent[] = useSelector((state: RootState) => state.student.students);
     const [check, setCheck] = useState<number>(0)
     const [student,setStudent] = useState<IStudent>({
         firstname: "",
@@ -83,19 +84,19 @@ const Student = () => {
             </div>
 
             <div>
-                <label htmlFor="studentNumber">Student No</label>
+                <label htmlFor="studentNumber">Student ID</label>
                 <input type="text" placeholder="Enter Student No" name="studentNumber" id="studentNumber" onChange={change} value={student.studentNumber}/>
             </div>
 
             <div>
-                <label htmlFor="classNumber">Class No</label>
+                <label htmlFor="classNumber">Class Number</label>
                 <input type="text" placeholder="Enter Class No" name="classNumber" id="classNumber" onChange={change} value={student.classNumber}/>
             </div>
 
-            {check == -1 && <p style={{color:"red",fontWeight: 600, fontSize: "11px"}}>Please fill in all fields or same student</p>}
-            {check == 1 && <p style={{color:"green",fontWeight: 600, fontSize: "11px"}}>Student added successfully</p>}
+            {check == -1 && <p style={{color:"red",fontWeight: 600, fontSize: "8px"}}>Please fill in all fields or same student</p>}
+            {check == 1 && <p style={{color:"green",fontWeight: 600, fontSize: "8px"}}>Student added successfully</p>}
             
-            <input className={style.btn} type="submit" value="Add Student"/>
+            <input className={style.btn} type="submit" value="Add Student" style={{ margin: check!? "2px" : ""}}/>
         </form>
       </div>
   )

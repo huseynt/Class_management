@@ -1,11 +1,13 @@
 .student {
     width: 35%;
-    height: 270px;
+    height: 275px;
     min-width: 380px;
     padding: 20px 10px 10px;
     border-bottom: 1px solid #ccc;
-    background-color: beige;
+    background-color: #f5f5dce1;
     border-radius: 20px;
+    font-size: 10px;
+    box-shadow: 0 0 10px 0 #0000009f;
 
     .studentForm {
         display: flex;
@@ -13,6 +15,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 18px 0 10px;
+
 
         div {
             width: 320px;
@@ -22,11 +25,16 @@
 
             label {
                 font-weight: bold;
-                font-size: 15px;
+                font-size: 12px;
                 margin: 7px;
+                
             }
             input {
-                padding: 3px;
+                padding: 1px 3px;
+                font-size: 12px;
+            }
+            input:focus {
+                background-color: #d7f6ff;
             }
         }
 
@@ -41,6 +49,11 @@
             background-color: #4CAF50;
             color: white;
             border-radius: 3px;
+        }
+        .btn:hover {
+            cursor: pointer;
+            background-color: #357936;
+            transition: 0.3s;
         }
     }
 }

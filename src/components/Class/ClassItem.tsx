@@ -1,25 +1,25 @@
-import style from "./studentItem.module.css"
-import { INewStudent } from "../../interface/interface"
+import style from "./classItem.module.css"
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { changeStudent, deleteStudent} from "../../redux/expense/studentSlice"
+import { deleteLesson, changeLesson} from "../../redux/expense/lessonSlice"
+import { INewLesson } from "../../interface/interface"
 
-const StudentItem = (props:INewStudent) => {
-  const { id, firstname, surname, studentNumber, classNumber} = props;
+const ClassItem = (props:INewLesson) => {
+  const { id, lessonName, teacherName, teacherNumber, classNumber} = props;
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
-  const [newStudent, setNewStudent] = useState({
+  const [newLesson, setNewLesson] = useState({
     id: id,
-    firstname: firstname,
-    surname: surname,
-    studentNumber: studentNumber,
+    lessonName: lessonName,
+    teacherName: teacherName,
+    teacherNumber: teacherNumber,
     classNumber: classNumber
   });
 
   const change = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (edit) {
-      setNewStudent({
-        ...newStudent,
+      setNewLesson({
+        ...newLesson,
         [e.target.name]: e.target.value,
       });
     }
@@ -29,12 +29,12 @@ const StudentItem = (props:INewStudent) => {
   const editSubmit = () => {
     if (edit) {
       dispatch(
-        changeStudent({
-          id: newStudent.id,
-          firstname: newStudent.firstname,
-          surname: newStudent.surname,
-          studentNumber: newStudent.studentNumber,
-          classNumber: newStudent.classNumber
+        changeLesson({
+          id: newLesson.id,
+          lessonName: newLesson.lessonName,
+          surname: newLesson.teacherName,
+          studentNumber: newLesson.teacherNumber,
+          classNumber: newLesson.classNumber
         })
       );
     }
@@ -43,37 +43,33 @@ const StudentItem = (props:INewStudent) => {
 
 
   const deleteItem = () => {
-    console.log(newStudent.id, "Deleted");
+    console.log(newLesson.id, "Deleted");
     dispatch(
-      deleteStudent({
-        id: newStudent.id,
-        firstname: newStudent.firstname,
-        surname: newStudent.surname,
-        studentNumber: newStudent.studentNumber,
-        classNumber: newStudent.classNumber
+      deleteLesson({
+        id: newLesson.id,
+        lessonName: newLesson.lessonName,
+        surname: newLesson.teacherName,
+        studentNumber: newLesson.teacherNumber,
+        classNumber: newLesson.classNumber
       })
     );
   };
 
-
-
   useEffect(() => {
-    setNewStudent({
+    setNewLesson({
       id: id,
-      firstname: firstname,
-      surname: surname,
-      studentNumber: studentNumber,
+      lessonName: lessonName,
+      teacherName: teacherName,
+      teacherNumber: teacherNumber,
       classNumber: classNumber
     });
   }, [
     id,
-    firstname,
-    surname,
-    studentNumber,
+    lessonName,
+    teacherName,
+    teacherNumber,
     classNumber
   ]);
-
-
 
 
   return (
@@ -81,33 +77,33 @@ const StudentItem = (props:INewStudent) => {
       <td>
         <input
           type="text"
-          name="studentNumber"
-          value={newStudent.studentNumber}
+          name="lessonName"
+          value={newLesson.lessonName}
           onChange={change}
           style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
-          // disabled={!edit}
+          disabled={!edit}
         />
       </td>
 
       <td>
         <input
           type="text"
-          name="firstname"
-          value={newStudent.firstname}
+          name="teacherName"
+          value={newLesson.teacherName}
           onChange={change}
           style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
-          // disabled={!edit}
+          disabled={!edit}
         />
       </td>
 
       <td>
         <input
           type="text"
-          name="surname"
-          value={newStudent.surname}
+          name="teacherNumber"
+          value={newLesson.teacherNumber}
           onChange={change}
           style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
-          // disabled={!edit}
+          disabled={!edit}
         />
       </td>
 
@@ -115,10 +111,10 @@ const StudentItem = (props:INewStudent) => {
         <input
           type="text"
           name="classNumber"
-          value={newStudent.classNumber}
+          value={newLesson.classNumber}
           onChange={change}
           style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
-          // disabled={!edit}
+          disabled={!edit}
         />
       </td>
 
@@ -128,8 +124,7 @@ const StudentItem = (props:INewStudent) => {
         onClick={editSubmit}
         className={style.edit}
       >
-        {" "}
-        {!edit ? "Edit" : "Submit"}{" "}
+        {!edit ? "Edit" : "Submit"}
       </td>
       <td
         onClick={deleteItem}
@@ -141,4 +136,14 @@ const StudentItem = (props:INewStudent) => {
   )
 }
 
-export default StudentItem
+export default ClassItem
+
+
+
+
+
+
+
+
+
+// const {lessonName, teacherName, teacherNumber, classNumber} = props;

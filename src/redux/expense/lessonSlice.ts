@@ -18,11 +18,21 @@ const lessonSlice = createSlice({
         resetState: (state) => {
             state.lessons = [];
         },
-        deleteStudent: (state, action) => {
-            state.lessons = state.lessons.filter((lesson) => lesson.lessonName !== action.payload);
+        deleteLesson: (state, action) => {
+            state.lessons = state.lessons.filter((lesson) => lesson.id !== action.payload.id);
+        },
+        changeLesson: (state, action) => {
+            const {id,lessonName, teacherName, teacherNumber, classNumber} = action.payload;
+            const point = state.lessons.find((p) => p.id == id);
+            if (point) {
+                point.lessonName = lessonName;
+                point.teacherName = teacherName;
+                point.teacherNumber = teacherNumber;
+                point.classNumber = classNumber;
+            }
         }
     }
 });
 
 export default lessonSlice.reducer;
-export const { addLesson, resetState, deleteStudent } = lessonSlice.actions;
+export const { addLesson, resetState, changeLesson, deleteLesson} = lessonSlice.actions;
