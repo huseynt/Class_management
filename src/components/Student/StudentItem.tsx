@@ -1,4 +1,4 @@
-import style from "./studentItem.module.css"
+import style from "../Student/student_item.module.css"
 import { INewStudent } from "../../interface/interface"
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
