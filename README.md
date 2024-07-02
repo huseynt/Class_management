@@ -2,60 +2,69 @@
 
 ## To install this project, follow these steps:
 
-1. Clone the repository:
+1.Clone the repository:
 
-   ```bash
+  ```
    git clone <repo-url>
    cd <repo-dir>
+  ```
 
 2.Install the necessary packages:
 
-npm install
+  ``` 
+  npm install  
+  ```
 
 3. Add Redux Toolkit and React-Redux packages:
 
-npm install @reduxjs/toolkit
-npm install react-redux
+  ```
+  npm install @reduxjs/toolkit
+  npm install react-redux 
+  ```
 
 4.Start the project:
-npm run dev
+
+  ```
+  npm run dev
+  ```
 
 ## The project has the following structure:
 
-.
-├── node_modules/
-├── public/
-│   ├── information.md
-├── src/
-│   ├── components/
-│   │   ├── Class/
-│   │   ├── Point/
-│   │   ├── Student/
-│   ├── interface/
-│   │   ├── interface.ts
-│   ├── redux/
-│   │   ├── expense/
-│   │   │   ├── lessonSlice.ts
-│   │   │   ├── pointSlice.ts
-│   │   │   ├── studentSlice.ts
-│   │   ├── index.ts
-│   │   ├── rootReducer.ts
-│   ├── App.module.css
-│   ├── App.tsx
-│   ├── index.css
-│   ├── main.tsx
-│   ├── vite-env.d.ts
-├── .eslintrc.cjs
-├── .gitignore
-├── index.html
-├── package-lock.json
-├── package.json
-├── README.md
-├── tsconfig.app.json
-├── tsconfig.json
-├── tsconfig.node.json
-└── vite.config.ts
-
+```
+  .
+  ├── node_modules/
+  ├── public/
+  │   ├── information.md
+  ├── src/
+  │   ├── components/
+  │   │   ├── Class/
+  │   │   ├── Point/
+  │   │   ├── Student/
+  │   ├── interface/
+  │   │   ├── interface.ts
+  │   ├── redux/
+  │   │   ├── expense/
+  │   │   │   ├── lessonSlice.ts
+  │   │   │   ├── pointSlice.ts
+  │   │   │   ├── studentSlice.ts
+  │   │   ├── index.ts
+  │   │   ├── rootReducer.ts
+  │   ├── App.module.css
+  │   ├── App.tsx
+  │   ├── index.css
+  │   ├── main.tsx
+  │   ├── vite-env.d.ts
+  ├── .eslintrc.cjs
+  ├── .gitignore
+  ├── index.html
+  ├── package-lock.json
+  ├── package.json
+  ├── README.md
+  ├── tsconfig.app.json
+  ├── tsconfig.json
+  ├── tsconfig.node.json
+  └── vite.config.ts
+```
 
 # React + TypeScript + Vite
 
