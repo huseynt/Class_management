@@ -45,11 +45,7 @@ const StudentItem = (props:INewStudent) => {
   const deleteItem = () => {
     dispatch(
       deleteStudent({
-        id: newStudent.id,
-        firstname: newStudent.firstname,
-        surname: newStudent.surname,
-        studentNumber: newStudent.studentNumber,
-        classNumber: newStudent.classNumber
+        id: newStudent.id
       })
     );
   };
@@ -79,7 +75,7 @@ const StudentItem = (props:INewStudent) => {
           value={newStudent.studentNumber}
           onChange={change}
           style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
-          // disabled={!edit}
+          disabled={!edit}
         />
       </td>
 
@@ -90,7 +86,7 @@ const StudentItem = (props:INewStudent) => {
           value={newStudent.firstname}
           onChange={change}
           style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
-          // disabled={!edit}
+          disabled={!edit}
         />
       </td>
 
@@ -101,7 +97,7 @@ const StudentItem = (props:INewStudent) => {
           value={newStudent.surname}
           onChange={change}
           style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
-          // disabled={!edit}
+          disabled={!edit}
         />
       </td>
 
@@ -112,7 +108,7 @@ const StudentItem = (props:INewStudent) => {
           value={newStudent.classNumber}
           onChange={change}
           style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
-          // disabled={!edit}
+          disabled={!edit}
         />
       </td>
 
@@ -122,8 +118,7 @@ const StudentItem = (props:INewStudent) => {
         onClick={editSubmit}
         className={style.edit}
       >
-        {" "}
-        {!edit ? "Edit" : "Submit"}{" "}
+        {!edit ? "Edit" : "Submit"}
       </td>
       <td
         onClick={deleteItem}
