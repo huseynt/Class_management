@@ -43,7 +43,6 @@ const ClassItem = (props:INewLesson) => {
 
 
   const deleteItem = () => {
-    console.log(newLesson.id, "Deleted");
     dispatch(
       deleteLesson({
         id: newLesson.id,

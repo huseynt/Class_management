@@ -19,7 +19,6 @@ function App() {
   const pointList: INewPoint[] = useSelector(
     (state: RootState) => state.point.points
   );
-
   
   return (
     <div className={style.app}>

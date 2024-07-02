@@ -43,7 +43,6 @@ const StudentItem = (props:INewStudent) => {
 
 
   const deleteItem = () => {
-    console.log(newStudent.id, "Deleted");
     dispatch(
       deleteStudent({
         id: newStudent.id,
@@ -54,8 +53,6 @@ const StudentItem = (props:INewStudent) => {
       })
     );
   };
-
-
 
   useEffect(() => {
     setNewStudent({
@@ -72,9 +69,6 @@ const StudentItem = (props:INewStudent) => {
     studentNumber,
     classNumber
   ]);
-
-
-
 
   return (
     <tr className={style.tr}>

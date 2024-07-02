@@ -55,7 +55,6 @@ const PointItem = (props: INewPoint) => {
   };
 
   const deleteItem = () => {
-    console.log(newPoint.id, "Deleted");
     dispatch(
       deletePoint({
         id: newPoint.id,

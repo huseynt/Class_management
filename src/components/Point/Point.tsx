@@ -1,5 +1,5 @@
 import style from "./point.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IStudent, ILesson, IPoint } from "../../interface/interface";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
@@ -120,9 +120,6 @@ const Point = () => {
     }, 1000);
   };
 
-  useEffect(() => {
-    console.log(point);
-  }, [point]);
 
   return (
     <div className={style.point} id="studentForm">

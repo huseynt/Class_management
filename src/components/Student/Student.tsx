@@ -1,5 +1,5 @@
 import style from './student.module.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { IStudent } from '../../interface/interface'
 import { useDispatch, useSelector } from 'react-redux'
 import { addStudent } from '../../redux/expense/studentSlice'
@@ -61,10 +61,6 @@ const Student = () => {
             setCheck(0)
         },1000)
     }
-
-    useEffect(() => { 
-        console.log(student, studentList)
-    }, [student, studentList])
     
   return (
       <div className={style.student} id='studentForm'>
