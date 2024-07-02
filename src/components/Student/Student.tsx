@@ -18,7 +18,6 @@ const Student = () => {
         classNumber: ""
     })
 
-
     //  on Submit Form
     const submit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -62,8 +61,6 @@ const Student = () => {
             setCheck(0)
         },1000)
     }
-
-
 
     useEffect(() => { 
         console.log(student, studentList)

@@ -1,5 +1,5 @@
 import style from './class.module.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ILesson } from '../../interface/interface'
 import { useDispatch, useSelector } from 'react-redux'
 import { addLesson } from '../../redux/expense/lessonSlice'
@@ -64,10 +64,6 @@ const Class = () => {
             setCheck(0)
         },1000)
     }
-
-    useEffect(() => { 
-        console.log(lesson)
-    }, [lesson])
     
   return (
       <div className={style.class} id='classForm'>
