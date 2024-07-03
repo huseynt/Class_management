@@ -1,13 +1,21 @@
+// ---------------- Import style ---------------------
 import style from "./point.module.css";
+// -------------------- Import Hooks ---------------------
 import { useState } from "react";
+// -------------------- Import Interface ---------------------
 import { IStudent, ILesson, IPoint } from "../../interface/interface";
+// -------------------- Import Redux ---------------------
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
-import { addPoint } from "../../redux/expense/pointSlice";
+import { addPoint } from "../../redux/slice/pointSlice";
+
 
 const Point = () => {
+  // ------------------------- Dispatch -----------------------------
   const dispatch = useDispatch();
+  //  ------------------------ useState -------------------------------
   const [check, setCheck] = useState<number>(0);
+  const [filterTeacher, setFilterTeacher] = useState<string[]>([]);
   const [point, setPoint] = useState<IPoint>({
     studentName: "",
     teacherName: "",
@@ -16,23 +24,31 @@ const Point = () => {
     dateTime: "",
     score: 0,
   });
-  const [filterTeacher, setFilterTeacher] = useState<string[]>([]);
+  // ----------------------- UseSelectors --------------------------------
   const studentList: IStudent[] = useSelector(
     (state: RootState) => state.student.students
   );
-  const uniqueStudent = Array.from(
-    new Set(studentList.map((student: IStudent) => student.firstname))
-  );
   const lessonList: ILesson[] = useSelector(
     (state: RootState) => state.lesson.lessons
-  );
-  const uniqueLesson = Array.from(
-    new Set(lessonList.map((lesson: ILesson) => lesson.lessonName))
   );
   const pointList: IPoint[] = useSelector(
     (state: RootState) => state.point.points
   );
 
+  // ------------------- Depends on useSelector changes --------------------
+  const uniqueStudent = Array.from(
+    new Set(studentList.map((student: IStudent) => student.firstname))
+  );
+  const uniqueLesson = Array.from(
+    new Set(lessonList.map((lesson: ILesson) => lesson.lessonName))
+  );
+  const samePoint = pointList.find(
+    (p) =>
+      p.studentName === point.studentName &&
+      p.lessonName === point.lessonName &&
+      p.dateTime === point.dateTime
+  );
+  // -------------------- Change function -------------------------------
   const change = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
@@ -45,6 +61,7 @@ const Point = () => {
     }
   };
 
+  // -------------------- addClass function -------------------------------
   const addClass = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
@@ -81,6 +98,7 @@ const Point = () => {
     }
   };
 
+  // -------------------- Submit Form ---------------------------
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -89,9 +107,9 @@ const Point = () => {
       form.teacherName.value !== "" &&
       form.lessonName.value !== "" &&
       form.lessonClassNumber.value !== "" &&
-      form.dateTime.value !== ""
+      form.dateTime.value !== "" &&
+      samePoint=== undefined
     ) {
-      console.log(point);
       setCheck(1);
       resetForm();
       dispatch(
@@ -106,6 +124,7 @@ const Point = () => {
     }
   };
 
+  // --------------- Reset Form ------------------------
   const resetForm = () => {
     setTimeout(() => {
       setPoint({

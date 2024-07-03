@@ -1,21 +1,20 @@
+// ---------------- Import style ---------------------
 import style from "./pointItem.module.css";
-import { INewPoint } from "../../interface/interface";
+// -------------------- Import Hooks ---------------------
 import { useState, useEffect } from "react";
+// -------------------- Import Interface ---------------------
+import { INewPoint } from "../../interface/interface";
+// -------------------- Import Redux ---------------------
 import { useDispatch } from "react-redux";
-import { changePoint, deletePoint } from "../../redux/expense/pointSlice";
+import { changePoint, deletePoint } from "../../redux/slice/pointSlice";
+
 
 const PointItem = (props: INewPoint) => {
-  const {
-    id,
-    studentName,
-    teacherName,
-    lessonName,
-    lessonClassNumber,
-    dateTime,
-    score,
-  } = props;
-  const [edit, setEdit] = useState(false);
+  // ------------------------- Dispatch -----------------------------
   const dispatch = useDispatch();
+  // ------------------------- useState / Props -----------------------------
+  const { id, studentName, teacherName, lessonName, lessonClassNumber, dateTime, score } = props;
+  const [edit, setEdit] = useState(false);
   const [newPoint, setNewPoint] = useState({
     id: id,
     studentName: studentName,
@@ -25,8 +24,7 @@ const PointItem = (props: INewPoint) => {
     dateTime: dateTime,
     score: score,
   });
-
-  // On Change Input
+  // ------------------------- Change Function -----------------------------
   const change = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (edit) {
       setNewPoint({
@@ -35,8 +33,7 @@ const PointItem = (props: INewPoint) => {
       });
     }
   };
-
-  // Edit or Submit
+  // ------------------------- Edit Function -----------------------------
   const editSubmit = () => {
     if (edit) {
       dispatch(
@@ -53,7 +50,7 @@ const PointItem = (props: INewPoint) => {
     }
     setEdit(!edit);
   };
-
+  // ------------------------- Delete Function -----------------------------
   const deleteItem = () => {
     dispatch(
       deletePoint({
@@ -67,7 +64,7 @@ const PointItem = (props: INewPoint) => {
       })
     );
   };
-
+  // ------------------------- useEffect -----------------------------
   useEffect(() => {
     setNewPoint({
       id: id,
@@ -163,8 +160,7 @@ const PointItem = (props: INewPoint) => {
         onClick={editSubmit}
         className={style.edit}
       >
-        {" "}
-        {!edit ? "Edit" : "Submit"}{" "}
+        {!edit ? "Edit" : "Submit"}
       </td>
       <td
         onClick={deleteItem}

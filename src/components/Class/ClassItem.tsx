@@ -1,12 +1,20 @@
+// ---------------- Import style ---------------------
 import style from "./classItem.module.css"
+// -------------------- Import Hooks ---------------------
 import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { deleteLesson, changeLesson} from "../../redux/expense/lessonSlice"
+// -------------------- Import Interface ---------------------
 import { INewLesson } from "../../interface/interface"
+// -------------------- Import Redux ---------------------
+import { useDispatch } from "react-redux"
+import { deleteLesson, changeLesson} from "../../redux/slice/lessonSlice"
+
 
 const ClassItem = (props:INewLesson) => {
-  const { id, lessonName, teacherName, teacherNumber, classNumber} = props;
+
+  // ------------------------- Dispatch -----------------------------
   const dispatch = useDispatch();
+  // ------------------------- useState / Props -----------------------------
+  const { id, lessonName, teacherName, teacherNumber, classNumber} = props;
   const [edit, setEdit] = useState(false);
   const [newLesson, setNewLesson] = useState({
     id: id,
@@ -16,6 +24,7 @@ const ClassItem = (props:INewLesson) => {
     classNumber: classNumber
   });
 
+  // ------------------------- Change Function -----------------------------
   const change = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (edit) {
       setNewLesson({
@@ -25,7 +34,7 @@ const ClassItem = (props:INewLesson) => {
     }
   };
 
-  // Edit or Submit
+  // ------------------------- Edit Function -----------------------------
   const editSubmit = () => {
     if (edit) {
       dispatch(
@@ -41,7 +50,7 @@ const ClassItem = (props:INewLesson) => {
     setEdit(!edit);
   };
 
-
+  // ------------------------- Delete Function -----------------------------
   const deleteItem = () => {
     dispatch(
       deleteLesson({
@@ -54,6 +63,7 @@ const ClassItem = (props:INewLesson) => {
     );
   };
 
+  // ------------------------- useEffect -----------------------------
   useEffect(() => {
     setNewLesson({
       id: id,
@@ -136,13 +146,3 @@ const ClassItem = (props:INewLesson) => {
 }
 
 export default ClassItem
-
-
-
-
-
-
-
-
-
-// const {lessonName, teacherName, teacherNumber, classNumber} = props;

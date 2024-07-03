@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import lessonSlice from './expense/lessonSlice';
-import studentSlice from './expense/studentSlice';
-import pointSlice from './expense/pointSlice';
+import lessonSlice from './slice/lessonSlice';
+import studentSlice from './slice/studentSlice';
+import pointSlice from './slice/pointSlice';
 
 const rootReducer = combineReducers({
     lesson: lessonSlice,

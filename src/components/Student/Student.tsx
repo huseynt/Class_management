@@ -1,15 +1,21 @@
+// ---------------- Import style ---------------------
 import style from './student.module.css'
+// -------------------- Import Hooks ---------------------
 import { useState } from 'react'
+// -------------------- Import Interface ---------------------
 import { IStudent } from '../../interface/interface'
+// -------------------- Import Redux ---------------------
 import { useDispatch, useSelector } from 'react-redux'
-import { addStudent } from '../../redux/expense/studentSlice'
+import { addStudent } from '../../redux/slice/studentSlice'
 import { RootState } from '../../redux/rootReducer'
 
 
 const Student = () => {
-
+    // ------------------------- Dispatch -----------------------------
     const dispatch = useDispatch();
+    // ------------------------- useSelector -----------------------------
     const studentList: IStudent[] = useSelector((state: RootState) => state.student.students);
+    // ------------------------- useState -----------------------------
     const [check, setCheck] = useState<number>(0)
     const [student,setStudent] = useState<IStudent>({
         firstname: "",
@@ -17,12 +23,16 @@ const Student = () => {
         studentNumber: "",
         classNumber: ""
     })
-
-    //  on Submit Form
+    // ------------------------- Submit Function -----------------------------
     const submit = (e: React.FormEvent) => {
         e.preventDefault()
         const form = e.target as HTMLFormElement
-        if ( studentList.find((student) => student.studentNumber === form.studentNumber.value) || form.firstname.value === "" || form.surname.value === "" || form.studentNumber.value === "" || form.classNumber.value === "") {
+        if ( studentList.find((student) => 
+            student.studentNumber === form.studentNumber.value) || 
+            form.firstname.value === "" || 
+            form.surname.value === "" || 
+            form.studentNumber.value === "" || 
+            form.classNumber.value === "") {
             setCheck(-1)
             resetForm()
         }  else {
@@ -40,16 +50,14 @@ const Student = () => {
             resetForm()
         }
     }
-
-    // On Change Input
+    // ------------------------- Change Function -----------------------------
     const change = (e: React.ChangeEvent<HTMLInputElement>) => {
         setStudent({
             ...student,
             [e.target.name]: e.target.value
         })
     }
-
-    // Reset Form
+    // ------------------------- Reset Function -----------------------------
     const resetForm = () => {
         setTimeout(() => {
             setStudent({
@@ -62,6 +70,7 @@ const Student = () => {
         },1000)
     }
     
+
   return (
       <div className={style.student} id='studentForm'>
         <h2 style={{textAlign: "center"}}>Student Form</h2>
@@ -95,4 +104,4 @@ const Student = () => {
   )
 }
 
-export default Student
+export default Student;

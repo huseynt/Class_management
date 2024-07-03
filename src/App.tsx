@@ -1,15 +1,20 @@
+// ------------------------------ Import Style ------------------------------------
 import style from "./App.module.css";
+// ------------------------------ Import Components ---------------------------------
 import Student from "./components/Student/Student";
 import Class from "./components/Class/Class";
 import ClassItem from "./components/Class/ClassItem";
 import StudentItem from "./components/Student/StudentItem";
 import PointItem from "./components/Point/PointItem";
 import Point from "./components/Point/Point";
+// ------------------------------ Import Redux / Interface ----------------------------------
 import { useSelector } from "react-redux";
 import { INewStudent, INewPoint, INewLesson } from "./interface/interface";
 import { RootState } from "./redux/rootReducer";
 
+
 function App() {
+  // ------------------------------ useSelector ------------------------------------
   const studentList: INewStudent[] = useSelector(
     (state: RootState) => state.student.students
   );
@@ -19,16 +24,20 @@ function App() {
   const pointList: INewPoint[] = useSelector(
     (state: RootState) => state.point.points
   );
-  
+
   return (
     <div className={style.app}>
       <h2 className={style.head}>Class Management System</h2>
+
+      {/* Student and Class Form */}
       <div className={style.upForm}>
         <Student />
         <Class />
       </div>
 
       <div className={style.tables}>
+        
+        {/* Student and Class Table */}
         <table className={style.table}>
           <thead>
             <tr>
@@ -55,6 +64,7 @@ function App() {
           </tbody>
         </table>
 
+        {/* Lesson Table */}
         <table className={style.table}>
           <thead>
             <tr>
@@ -82,8 +92,10 @@ function App() {
         </table>
       </div>
 
+      {/* Point Form */}
       <Point />
 
+      {/* Point Table */}
       <div className={style.tablePointBlock}>
         <table className={style.tablePoint}>
           <thead>

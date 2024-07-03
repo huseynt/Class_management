@@ -1,14 +1,21 @@
+// ---------------- Import style ---------------------
 import style from './class.module.css'
+// -------------------- Import Hooks ---------------------
 import { useState } from 'react'
+// -------------------- Import Interface ---------------------
 import { ILesson } from '../../interface/interface'
+// -------------------- Import Redux ---------------------
 import { useDispatch, useSelector } from 'react-redux'
-import { addLesson } from '../../redux/expense/lessonSlice'
+import { addLesson } from '../../redux/slice/lessonSlice'
 import { RootState } from '../../redux/rootReducer'
 
 const Class = () => {
 
+    // ------------------------- Dispatch -----------------------------
     const dispatch = useDispatch();
+    // ------------------------- useSelector -----------------------------
     const lessonList: ILesson[] = useSelector((state: RootState) => state.lesson.lessons);
+    // ------------------------- useState -----------------------------
     const [check, setCheck] = useState<number>(0)
     const [lesson, setLesson] = useState<ILesson>({
         lessonName: "",
@@ -16,7 +23,7 @@ const Class = () => {
         teacherNumber: "",
         classNumber: ""
     })
-
+    // ------------------------- Submit Function -----------------------------
     const submit = (e: React.FormEvent) => {
         e.preventDefault()
         const form = e.target as HTMLFormElement
@@ -45,14 +52,14 @@ const Class = () => {
             resetForm()
         }
     }
-
+    // ------------------------- Change Function -----------------------------
     const change = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLesson({
             ...lesson,
             [e.target.name]: e.target.value
         })
     }
-
+    // ------------------------- Reset Function -----------------------------
     const resetForm = () => {
         setTimeout(() => {
             setLesson({
@@ -65,6 +72,7 @@ const Class = () => {
         },1000)
     }
     
+
   return (
       <div className={style.class} id='classForm'>
         <h2 style={{textAlign: "center"}}>Lesson Form</h2>

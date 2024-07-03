@@ -1,12 +1,19 @@
+// ---------------- Import style ---------------------
 import style from "../Student/student_item.module.css"
-import { INewStudent } from "../../interface/interface"
+// -------------------- Import Hooks ---------------------
 import { useState, useEffect } from "react"
+// -------------------- Import Interface ---------------------
+import { INewStudent } from "../../interface/interface"
+// -------------------- Import Redux ---------------------
 import { useDispatch } from "react-redux"
-import { changeStudent, deleteStudent} from "../../redux/expense/studentSlice"
+import { changeStudent, deleteStudent} from "../../redux/slice/studentSlice"
+
 
 const StudentItem = (props:INewStudent) => {
-  const { id, firstname, surname, studentNumber, classNumber} = props;
+  // ------------------------- Dispatch -----------------------------
   const dispatch = useDispatch();
+  // ------------------------- useState / Props -----------------------------
+  const { id, firstname, surname, studentNumber, classNumber} = props;
   const [edit, setEdit] = useState(false);
   const [newStudent, setNewStudent] = useState({
     id: id,
@@ -15,7 +22,7 @@ const StudentItem = (props:INewStudent) => {
     studentNumber: studentNumber,
     classNumber: classNumber
   });
-
+  // ------------------------- Change Function -----------------------------
   const change = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (edit) {
       setNewStudent({
@@ -24,8 +31,7 @@ const StudentItem = (props:INewStudent) => {
       });
     }
   };
-
-  // Edit or Submit
+  // ------------------------- Edit Function -----------------------------
   const editSubmit = () => {
     if (edit) {
       dispatch(
@@ -40,8 +46,7 @@ const StudentItem = (props:INewStudent) => {
     }
     setEdit(!edit);
   };
-
-
+  // ------------------------- Delete Function -----------------------------
   const deleteItem = () => {
     dispatch(
       deleteStudent({
@@ -49,7 +54,7 @@ const StudentItem = (props:INewStudent) => {
       })
     );
   };
-
+  // ------------------------- useEffect -----------------------------
   useEffect(() => {
     setNewStudent({
       id: id,
@@ -112,7 +117,6 @@ const StudentItem = (props:INewStudent) => {
         />
       </td>
 
-
       <td
         style={{backgroundColor: edit ? "#87fdb8" : "unset"}}
         onClick={editSubmit}
@@ -130,4 +134,4 @@ const StudentItem = (props:INewStudent) => {
   )
 }
 
-export default StudentItem
+export default StudentItem;
